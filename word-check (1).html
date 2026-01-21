@@ -1,1 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Word Check</title>
+  <style>
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+      margin:0;
+      background:#f5f5f5;
+    }
+    .card{
+      background:#fff;
+      padding:24px;
+      border-radius:14px;
+      box-shadow:0 10px 30px rgba(0,0,0,.08);
+      width:min(420px, 92vw);
+    }
+    .row{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    input{
+      flex:1;
+      padding:12px 14px;
+      border:1px solid #ddd;
+      border-radius:10px;
+      font-size:16px;
+      outline:none;
+    }
+    button{
+      width:46px;
+      height:46px;
+      border:none;
+      border-radius:12px;
+      cursor:pointer;
+      font-size:20px;
+      background:#111;
+      color:#fff;
+    }
+    #msg{
+      margin-top:14px;
+      font-size:16px;
+      font-weight:600;
+      min-height:20px;
+    }
+    .ok{ color:#138a36; }
+    .bad{ color:#d11a2a; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="row">
+      <input id="word" type="text" placeholder="Enter a word..." autocomplete="off" />
+      <button id="go">➜</button>
+    </div>
+    <div id="msg"></div>
+  </div>
+
+  <script>
+    const input = document.getElementById("word");
+    const btn = document.getElementById("go");
+    const msg = document.getElementById("msg");
+
+    function checkWord() {
+      const val = input.value.trim().toLowerCase();
+
+      if (val === "candle") {
+        msg.className = "ok";
+        msg.textContent = "Correct: b2xcoSuW_WA";
+      } 
+      else if (val === "frog") {
+        msg.className = "ok";
+        msg.textContent = "Correct: WZ5ZDkbCoRo";
+      } 
+      else {
+        msg.className = "bad";
+        msg.textContent = "try again";
+      }
+    }
+
+    btn.addEventListener("click", checkWord);
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") checkWord();
+    });
+  </script>
+</body>
+</html>
 
